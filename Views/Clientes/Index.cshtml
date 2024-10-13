@@ -1,0 +1,47 @@
+﻿@model IEnumerable<CRUDBiblioteca.Models.Cliente>
+
+@{
+    ViewData["Title"] = "Tabla Clientes";
+}
+
+<h1>Clientes</h1>
+
+<p>
+    <a class="btn btn-success" asp-action="Create"><i class="bi bi-file-plus"></i> Crear Cliente</a>
+</p>
+<table class="table table-warning table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreCompleto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Numero)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreCompleto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Numero)
+            </td>
+            <td>
+                    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i> Editar</a> |
+                    <a class="btn btn-info" asp-action="Details" asp-route-id="@item.Id"><i class="bi bi-info-square"></i> Detalles</a> |
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-trash3-fill"></i> Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
